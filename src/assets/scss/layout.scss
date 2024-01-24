@@ -1,0 +1,133 @@
+@use "variables" as v;
+
+%common-field {
+  text-align: center;
+  border-radius: 0.15rem;
+}
+
+@mixin replace-values($color, $bg, $pad) {
+  @extend %common-field;
+  background-color: $bg;
+  color: $color;
+  padding: $pad;
+}
+
+@mixin replace-pad($pad) {
+  @extend %common-field;
+  padding: $pad;
+}
+
+.badge-new {
+  @include replace-values(v.$white, v.$green, 0)
+}
+
+.badge-warning {
+  @include replace-values(v.$white, v.$orange, 0)
+}
+
+.head-bar {
+    margin-bottom: 0.05rem;
+    & .items {
+      display: flex;
+      justify-content: space-between;
+      & .nav-items {
+        list-style: none;
+        display: flex;
+        margin: 0.35rem 0.8rem;
+        padding: 0;
+      }
+      .title {
+        font-size: 1.5rem;
+        margin-left: 1.5rem;
+      }
+      .toggle {
+        font-size: 1.3rem;
+        margin-left: 0.6rem;
+        cursor: pointer;
+        &:hover {
+          color: v.$blue;
+        }
+      }
+    }
+}
+
+.side-bar {
+  display: block;
+  height: 100%;
+  position: fixed;
+  width: 18rem;
+  overflow-x: hidden;
+  transition: 0.5s;
+  cursor: pointer;
+
+  .menu-item {
+    display: flex;
+    margin: 0 0.2rem 0.2rem 0;
+    & * {
+      margin: 0.05rem 0 0 0.3rem;
+    }
+    .fit {
+      margin: auto 0.3rem;
+    }
+    @include replace-pad(0);
+
+    &:hover {
+      @extend .active;
+      opacity: 0.9;
+    }
+  }
+
+  .active {
+    background-color: v.$white;
+    color: v.$dark;
+  }
+
+  &.un-show {
+    width: 0;
+  }
+}
+
+.main-bar {
+  margin-left: 18rem;
+  display: flex;
+  padding: 0.1rem 0.05rem;
+  min-height: 86vh;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &.expand {
+    margin-left: 0;
+  }
+}
+
+.info-bar {
+  margin: 0.2rem 0.3rem;
+  display: block;
+  & * {
+    margin: 0.2rem 0 ;
+  }
+  p {
+    word-wrap: break-word;
+  }
+}
+
+.foot-bar {
+  text-align: center;
+}
+
+.flex {
+    display: flex;
+}
+
+@media screen and (max-width: 40em) {
+  .items {
+    flex-direction: column;
+    // align-items: center;
+  }
+  .side-bar {
+    width: 0;
+  }
+  .main-bar {
+    margin-left: 0;
+  }
+}

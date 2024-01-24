@@ -9,10 +9,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.3.11"
+    "feather-icons": "4",
+    "vue": "3",
+    "vue-feather": "2",
+    "vue-router": "4"
   },
   "devDependencies": {
+    "@types/node": "^20.10.5",
     "@vitejs/plugin-vue": "^4.5.2",
+    "sass": "^1.69.6",
     "typescript": "^5.2.2",
     "vite": "^5.0.8",
     "vue-tsc": "^1.8.25"
